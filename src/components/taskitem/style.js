@@ -24,7 +24,8 @@ export const DeleteButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  margin-left: 10px; /* Adjusted to ensure alignment */
+  margin-left: 10px; 
+  margin-right: 10px;
 
   img {
     width: 20px;

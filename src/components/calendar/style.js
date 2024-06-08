@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const CalendarContainer = styled.div`
   position: fixed;
   top: 44%;
-  left: 43%;
+  left: 44%;
   transform: translate(-50%, -50%);
   background-color: lightgray;
   padding: 10px; /* Reduced padding */

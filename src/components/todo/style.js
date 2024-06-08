@@ -46,6 +46,8 @@ export const SecondContainer = styled.div`
   overflow-y: auto;
   padding: 15px;
   margin-top: 10px;
+  margin-left: 70px;
+  margin-right: 70px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
