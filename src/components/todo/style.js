@@ -4,7 +4,7 @@ export const Layout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 120%;
+  width: 100%; /* Adjusted width to ensure proper alignment */
 `;
 
 export const Container = styled.div`
@@ -12,7 +12,7 @@ export const Container = styled.div`
   background-color: white;
   color: darkslategray;
   border-radius: 50px;
-  width: 120%;
+  width: 100%;
   height: 20px; 
   padding: 15px;
   display: flex;
@@ -41,7 +41,7 @@ export const SecondContainer = styled.div`
   background-color: white;
   color: darkslategray;
   border-radius: 20px;
-  width: 120%;
+  width: 100%; /* Adjusted width to ensure proper alignment */
   max-height: 500px; 
   overflow-y: auto;
   padding: 15px;
@@ -49,11 +49,23 @@ export const SecondContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: center; /* Align the container center to center the header */
 
   b {
     margin-bottom: 10px;
   }
+
+  ol {
+    padding-left: 20px; /* Adjusted to reduce margin */
+    width: 100%; /* Ensure the list takes full width */
+    margin-left: 0; /* Align list to the left */
+  }
+`;
+
+export const ListHeader = styled.b`
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
 `;
 
 export const Image = styled.img`

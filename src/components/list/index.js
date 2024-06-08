@@ -1,12 +1,19 @@
 import React from 'react';
+import TaskItem from '../taskitem';
 
-function List({ tasks }) {
+function List({ tasks, onToggleTask, onDeleteTask }) {
   return (
-    <ul>
+    <ol>
       {tasks.map((task, index) => (
-        <li key={index}>{task}</li>
+        <TaskItem 
+          key={index} 
+          task={task} 
+          index={index} 
+          onToggle={onToggleTask} 
+          onDelete={onDeleteTask} 
+        />
       ))}
-    </ul>
+    </ol>
   );
 }
 
