@@ -1,27 +1,38 @@
 import React, { useState } from 'react';
-import { Container, Layout, SecondContainer, DateText, Button, Image } from './style';
-import AddTask from '../addtask/index';
-import List from '../list/index';
-import CustomCalendar from '../calendar/index'; // Import the Calendar component
+import { Container, Layout, SecondContainer, DateText, Button, Image, ListHeader } from './style';
+import AddTask from '../addtask';
+import List from '../list';
+import CustomCalendar from '../calendar';
 
 function TODO() {
   const [tasks, setTasks] = useState([]);
-  const [isCalendarOpen, setIsCalendarOpen] = useState(false); // State to manage calendar visibility
-  const [selectedDate, setSelectedDate] = useState(''); // State to manage selected date
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState('');
 
   const handleAddTask = (task) => {
-    setTasks([...tasks, task]);
+    setTasks([...tasks, { text: task, completed: false }]);
+  };
+
+  const handleToggleTask = (index) => {
+    const newTasks = tasks.map((task, i) =>
+      i === index ? { ...task, completed: !task.completed } : task
+    );
+    setTasks(newTasks);
+  };
+
+  const handleDeleteTask = (index) => {
+    const newTasks = tasks.filter((task, i) => i !== index);
+    setTasks(newTasks);
   };
 
   const handleButtonClick = () => {
-    console.log('Button clicked');
-    setIsCalendarOpen(true); // Open calendar when button is clicked
+    setIsCalendarOpen(true);
   };
 
   const handleCloseCalendar = (date) => {
-    setIsCalendarOpen(false); // Close calendar when close button is clicked
+    setIsCalendarOpen(false);
     if (date) {
-      setSelectedDate(date.toLocaleDateString()); // Update selected date
+      setSelectedDate(date.toLocaleDateString());
     }
   };
 
@@ -34,11 +45,11 @@ function TODO() {
         </Button>
       </Container>
       <SecondContainer>
-        <b>TO DO LIST</b>
-        <List tasks={tasks} />
+        <ListHeader>TO DO LIST</ListHeader>
+        <List tasks={tasks} onToggleTask={handleToggleTask} onDeleteTask={handleDeleteTask} />
         <AddTask onAddTask={handleAddTask} />
       </SecondContainer>
-      {isCalendarOpen && <CustomCalendar onClose={handleCloseCalendar} />} {/* Render Calendar if isCalendarOpen is true */}
+      {isCalendarOpen && <CustomCalendar onClose={handleCloseCalendar} />}
     </Layout>
   );
 }
